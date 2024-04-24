@@ -1,7 +1,7 @@
 // fetch data, from shipping table document converted from xcel to json
 async function fetchData() {
     try {
-        const response = await fetch('/shipping-disclaimer-text.json');
+        const response = await fetch('https://centricity-shipping-disclaimer.netlify.app/shipping-disclaimer-text.json');
 
         if (!response.ok) {
             throw new Error('Network response was not ok');
