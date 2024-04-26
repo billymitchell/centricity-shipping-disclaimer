@@ -27,14 +27,14 @@ async function getData() {
                 // if current url includes brightstores subdomain 
                 if (location.href.includes(`${store["Subdomain"]}.mybrightsites.com`)){
                         // insert custom text before submit button
-                        document.querySelector("input[type='submit']").insertAdjacentHTML("beforebegin", `${store["Custom Shipping Rendered Text"]}`)
+                        document.querySelector("input[type='submit']").insertAdjacentHTML("beforebegin", `<p>${store["Custom Shipping Rendered Text"]}</p>`)
                 }
                 // if there is a custom domain
                 if(store["Custom Domain"]){
                     // if current url includes custom domain
                     if (location.href.includes(`${store["Custom Domain"]}`)){
                         // insert custom text before submit button
-                        document.querySelector("input[type='submit']").insertAdjacentHTML("beforebegin", `${store["Custom Shipping Rendered Text"]}`)
+                        document.querySelector("input[type='submit']").insertAdjacentHTML("beforebegin", `<p>${store["Custom Shipping Rendered Text"]}</p>`)
 
                     }
                 }
