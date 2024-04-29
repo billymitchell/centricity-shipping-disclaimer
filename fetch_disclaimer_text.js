@@ -1,3 +1,6 @@
+// <!--Centricity Checkout Customization-->
+// {{ 'centricity/code/fetch_disclaimer_text.js' | asset_url | script_tag }}
+
 // fetch data, from shipping table document converted from xcel to json
 async function fetchData() {
     try {
@@ -26,16 +29,33 @@ async function getData() {
             if (store["Show Custom Renderd Shipping Text"] === true){
                 // if current url includes brightstores subdomain 
                 if (location.href.includes(`${store["Subdomain"]}.mybrightsites.com`)){
-                        // insert custom text before submit button
-                        document.querySelector("input[type='submit']").insertAdjacentHTML("beforebegin", `<p>${store["Custom Shipping Rendered Text"]}</p>`)
+                  		// if 2018 theme shipping submit button
+                  		if (document.querySelector(".content-item.shipping input[type='submit']")){
+                          // insert custom text before submit button
+                          document.querySelector(".content-item.shipping input[type='submit']").insertAdjacentHTML("beforebegin", `<p>${store["Custom Shipping Rendered Text"]}</p>`)
+                        }
+                  		// else 2022 theme
+                  		else {
+                          console.log("2022")
+                          // insert custom text before submit button
+                          document.querySelector("input[type='submit']").insertAdjacentHTML("beforebegin", `<p>${store["Custom Shipping Rendered Text"]}</p>`)
+                        }
                 }
                 // if there is a custom domain
                 if(store["Custom Domain"]){
                     // if current url includes custom domain
-                    if (location.href.includes(`${store["Custom Domain"]}`)){
-                        // insert custom text before submit button
-                        document.querySelector("input[type='submit']").insertAdjacentHTML("beforebegin", `<p>${store["Custom Shipping Rendered Text"]}</p>`)
-
+                    if (location.href.includes(`${store["Custom Domain"]}`)){                      	
+                      	// if 2018 theme shipping submit button
+                  		if (document.querySelector(".content-item.shipping input[type='submit']")){
+                          // insert custom text before submit button
+                          document.querySelector(".content-item.shipping input[type='submit']").insertAdjacentHTML("beforebegin", `<p>${store["Custom Shipping Rendered Text"]}</p>`)
+                        }
+                  		// else 2022 theme
+                  		else {
+                          // insert custom text before submit button
+                          document.querySelector("input[type='submit']").insertAdjacentHTML("beforebegin", `<p>${store["Custom Shipping Rendered Text"]}</p>`)
+                        }
+        
                     }
                 }
 
@@ -46,5 +66,4 @@ async function getData() {
 
 // run function
 getData();
-
 
